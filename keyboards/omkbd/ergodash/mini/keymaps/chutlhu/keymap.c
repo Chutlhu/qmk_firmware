@@ -60,14 +60,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
    * | Shift|  '"  |   Q  |   J  |   K  |   X  |  =+  |                    | Del  |   B  |   M  |   W  |   V  |   Z  | Shift|
    * |-------------+------+------+------+------+------+------+------+------+------+------+------+------+------+-------------|
-   * | Ctrl | Alt  |  NUM | Gui  ||||||||  EXT | Space| Enter|||||||| Bspc | Enter|SYMFUN|||||||| Left | Down |  Up  | Right|
+   * | Ctrl | NUM  |  Alt | Gui  ||||||||  EXT | Space| Enter|||||||| Bspc | Enter|SYMFUN|||||||| Left | Down |  Up  | Right|
    * ,----------------------------------------------------------------------------------------------------------------------.
    */
   [_BASE] = LAYOUT(
     QK_GESC, KC_SCLN, KC_COMM,  KC_DOT,   KC_P,   KC_Y,  KC_LBRC,                           KC_RBRC, KC_F,  KC_G,    KC_C,    KC_R,    KC_L,   KC_SLSH, 
 		KC_TAB,  KC_A,    KC_O,     KC_E,     KC_U,   KC_I,  KC_LPRN,                           KC_RPRN, KC_D,  KC_H,    KC_T,    KC_N,    KC_S,   KC_MINS, 
 		KC_LSFT, KC_QUOT, KC_Q,     KC_J,     KC_K,   KC_X,  KC_EQL,                            KC_DEL,  KC_B,  KC_M,    KC_W,    KC_V,    KC_Z,   KC_RSFT, 
-		KC_LCTL, KC_LALT, NUM,      KC_LGUI,          EXT,   KC_SPC,  KC_ENT,         KC_BSPC,  KC_ENT,  SYM,            KC_LEFT, KC_DOWN, KC_UP,  KC_RIGHT
+		KC_LCTL, NUM,     KC_LALT,  KC_LGUI,          EXT,   KC_SPC,  NAK,            KC_BSPC,  KC_ENT,  SYM,            KC_LEFT, KC_DOWN, KC_UP,  KC_RIGHT
   ),
   
   /* NUM
@@ -76,41 +76,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------|
    * |      |      |      |      |      |      |      |                    |      |      |   4  |   5  |   6  |   -  |      |
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * | Shift|      |      |      |      |      |      |                    |      |      |   1  |   2  |   3  |   +  | Shift|
+   * | Shift|      |      |      |      |      |      |                    |      |   0  |   1  |   2  |   3  |   +  | Shift|
    * |-------------+------+------+------+------+------+------+------+------+------+------+------+------+------+-------------|
-   * | Ctrl | Alt  |(HOLD)| Gui  ||||||||      |      |      |||||||| TRNS | TRNS | TRNS ||||||||   0  |  .   |      |      |
+   * | Ctrl |(HOLD)|  Alt | Gui  ||||||||      |      |      |||||||| TRNS | TRNS | TRNS ||||||||      |      |      |      |
    * ,----------------------------------------------------------------------------------------------------------------------.
    */
   [_NUM] = LAYOUT(
-    NAK,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    NAK,                   NAK,     KC_6,   KC_P7,  KC_P8,  KC_P9,   KC_P0,   NAK,
-    NAK,      NAK,     NAK,     NAK,     NAK,     NAK,     NAK,                   NAK,     NAK,    KC_P4,  KC_P5,  KC_P6,   KC_PMNS, NAK,
-    KC_LSFT,  NAK,     NAK,     NAK,     NAK,     NAK,     NAK,                   NAK,     NAK,    KC_P1,  KC_P2,  KC_P3,   KC_PPLS, KC_RSFT,
-    KC_LCTL, KC_LALT,  NUM,     KC_LGUI,          NAK,     NAK,  NAK,       NAK,  NAK,     NAK,            KC_P0,  KC_PDOT, KC_ENT,  NAK
+    NAK,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    NAK,                   NAK,     KC_6,   KC_P7,  KC_P8,  KC_P9,   KC_P0,   KC_TRNS,
+    NAK,      NAK,     NAK,     NAK,     NAK,     NAK,     NAK,                   NAK,     NAK,    KC_P4,  KC_P5,  KC_P6,   NAK,     NAK,
+    KC_LSFT,  NAK,     NAK,     NAK,     NAK,     NAK,     NAK,                   NAK,     KC_P0,  KC_P1,  KC_P2,  KC_P3,   NAK,     KC_RSFT,
+    KC_LCTL,  NUM,     KC_LALT, KC_LGUI,          NAK,     NAK,  NAK,       NAK,  NAK,     NAK,            NAK,    NAK,     KC_ENT,  NAK
   ),
-  
+
   /* EXT
    * ,----------------------------------------------------------------------------------------------------------------------.
-   * |  Esc |  7   |  5   |  3   |   1  |   9  | Play |                    | Vol+ |   0  |  2   |  4   |  6   |  8   |      |
+   * |  Esc |      |      |      |      |      | Play |                    | Vol+ |      | Home |  Up  |  End |      |      |
    * |------+------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------|
-   * |AltTAB|      |      |      |      | PgUp | Mute |                    | Vol- |      | Home |  Up  |  End | Save |      |
+   * |AltTAB|      |      |      |      | PgUp | Mute |                    | Vol- |      | Left | Down | Right| Save |      |
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * | Shift| Undo | Cut  | Copy | Paste| PgDn |      |                    | TRNS |      | Left | Down | Right| Undo | Shift|
+   * | Shift| Undo | Cut  | Copy | Paste| PgDn |      |                    | TRNS |      |      |      |      | Undo | Shift|
    * |-------------+------+------+------+------+------+------+------+------+------+------+------+------+------+-------------|
-   * | Ctrl | Alt  |  NUM | Gui  ||||||||(HOLD)| TRNS | TRNS |||||||| TRNS | TRNS |      ||||||||      |      |      |      |
+   * | Ctrl | Alt  |  NUM | Gui  ||||||||(HOLD)| TRNS | TRNS |||||||| TRNS | TRNS |      ||||||||      |      |      | Ext  |
    * ,----------------------------------------------------------------------------------------------------------------------.
    */
   [_EXT] = LAYOUT(
-    KC_ESC,  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    PLAY,                       VOLUP,   KC_0,    KC_2,    KC_4,    KC_6,    KC_8,     NAK,
-    MY_ATAB, NAK,     NAK,     NAK,     NAK,     KC_PGUP, MUTE,                       VOLDN,   NAK,     KC_HOME, KC_UP,   KC_END,  MY_SAVE,  NAK,
-    KC_LSFT, MY_UNDO, MY_CUT,  MY_COPY, MY_PSTE, KC_PGDN, NAK,                        KC_TRNS, NAK,     KC_LEFT, KC_DOWN, KC_RGHT, MY_UNDO,  KC_RSFT,
-    KC_LCTL, KC_LALT, NUM,      KC_LGUI,          EXT,     KC_TRNS,  NAK,    KC_TRNS, KC_TRNS, SYM,              NAK,     NAK,     NAK,      NAK 
+    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    PLAY,                       VOLUP,   KC_6,    KC_P7,   KC_P8,   KC_P9,   KC_P0,    KC_TRNS,
+    MY_ATAB, NAK,     NAK,     NAK,     NAK,     KC_PGUP, MUTE,                       VOLDN,   NAK,     KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, NAK,
+    KC_LSFT, MY_UNDO, MY_CUT,  MY_COPY, MY_PSTE, KC_PGDN, NAK,                        KC_TRNS, NAK,     NAK,     NAK,     NAK,     MY_UNDO,  KC_RSFT,
+    KC_LCTL, KC_LALT, NUM,     KC_LGUI,          EXT,     KC_TRNS,  NAK,    KC_TRNS, KC_TRNS,  SYM,              NAK,     NAK,     NAK,      EXT 
   ),
 
   /* SYM
    * ,----------------------------------------------------------------------------------------------------------------------.
    * |   `  |   !  |   @  |   #  |   $  |  %   |  {   |                    |  }   |   ^  |   &  |   *  |      |      |  \|  |
    * |------+------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |  =   |      |                    |      |      | Home |  Up  | End  |      |      |
+   * |      |      |      |      |      |      |  =   |                    |      |      | Home |  Up  | End  |      |      |
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
    * |      |      |      |      |      |      |      |                    |      |      | Left | Down | Right|      |      |
    * |-------------+------+------+------+------+------+------+------+------+------+------+------+------+------+-------------|
@@ -119,14 +119,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_SYM] = LAYOUT(
     KC_GRV,   KC_EXLM,  KC_AT,    KC_HASH, KC_DLR,  KC_PERC,  KC_LCBR,                    KC_RCBR, KC_CIRC, KC_AMPR, KC_ASTR, NAK,     NAK,     KC_BSLS,
-    NAK,      NAK,      NAK,      NAK,     KC_EQL,  NAK,      NAK,                        NAK,     NAK,     KC_TRNS, KC_TRNS, KC_TRNS, NAK,     NAK,
+    NAK,      NAK,      NAK,      NAK,     NAK,     KC_EQL,   NAK,                        NAK,     NAK,     KC_TRNS, KC_TRNS, KC_TRNS, NAK,     NAK,
     KC_LSFT,  NAK,      NAK,      NAK,     NAK,     NAK,      NAK,                        NAK,     NAK,     KC_TRNS, KC_TRNS, KC_TRNS, NAK,     NAK,
     KC_LCTL, KC_LALT,   NUM,      KC_LGUI,          EXT,      NAK,  NAK,           NAK,   SYM,     NAK,              NAK,     NAK,     NAK,     NAK 
   ),
 
   /* FUN
    * ,----------------------------------------------------------------------------------------------------------------------.
-   * |      |  F1  |  F2  |  F3  |  F5  |  F6  |      |                    |      |      |      |      |      |      |      |
+   * |      |  F1  |  F2  |  F3  |  F5  |      |      |                    |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------|
    * |      |      |      |      |      |      |      |                    | Mute |      |      |      |      |      |      |
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
